@@ -20,19 +20,28 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-/*Roll the dice and update the result*/
+
+    /*Roll the dice and update the result*/
     private fun rollDice() {
 //    Create new Dice object with 6 sides and roll it
         var dice = Dice(6)
         val diceRoll = dice.roll()
 //    Update the screen with the dice roll
         val diceImage: ImageView = findViewById(R.id.imageView)
-        diceImage.setImageResource(R.drawable.dice_2)
+        when (diceRoll) {
+            1 -> diceImage.setImageResource(R.drawable.dice_1)
+            2 -> diceImage.setImageResource(R.drawable.dice_2)
+            3 -> diceImage.setImageResource(R.drawable.dice_3)
+            4 -> diceImage.setImageResource(R.drawable.dice_4)
+            5 -> diceImage.setImageResource(R.drawable.dice_5)
+            6 -> diceImage.setImageResource(R.drawable.dice_6)
+        }
     }
-}
 
-class Dice(private val numSides: Int) {
-    fun roll(): Int {
-        return (1..numSides).random()
+    class Dice(private val numSides: Int) {
+        fun roll(): Int {
+            return (1..numSides).random()
+        }
     }
+
 }
